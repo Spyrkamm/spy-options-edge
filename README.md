@@ -2,7 +2,6 @@
 This Python script fetches live SPY options data and calculates theoretical vs market pricing to identify intraday edges — the premium you are paying (or receiving) relative to model-based fair value.
 
 --------
-Here’s a cleaned-up and more polished **README.md** draft for your repo, with clearer structure, headings, and trader-friendly explanations:
 
 ---
 
@@ -10,9 +9,9 @@ Here’s a cleaned-up and more polished **README.md** draft for your repo, with 
 # SPY Options Edge Analyzer
 
 The **SPY Options Edge Analyzer** is a Python script that fetches live SPY options data and compares **theoretical fair value pricing** against **market prices**.  
-It helps traders quantify **intraday edge** — the premium you are paying (or receiving) relative to model-based fair value.
+It is designed for **intraday trading**, helping traders quantify **edge** — the premium you are paying (or receiving) relative to model-based fair value.
 
-The script incorporates live data, Treasury yields, and dividend yield adjustments to compute:
+The script incorporates live data, Treasury yields, dividend yield adjustments, and **real-time time-to-expiration** (down to the minute) to compute:
 - Implied volatility (IV)
 - Theoretical option pricing (Black–Scholes)
 - Position Greeks
@@ -23,6 +22,7 @@ The script incorporates live data, Treasury yields, and dividend yield adjustmen
 ## ✨ Features
 
 - 📈 **Live SPY price tracking** with 3M Treasury (risk-free) rate and dividend yield adjustments  
+- ⏱️ **Real-time expiration clock**: time-to-expiration updates dynamically from the moment you run the script  
 - 🧮 **Implied Volatility (IV) analysis**: individual strike IV and weighted averages  
 - 💰 **Theoretical pricing** for calls and puts vs. market quotes  
 - 🔎 **Edge detection**: Market Price – Theoretical Price  
@@ -30,7 +30,7 @@ The script incorporates live data, Treasury yields, and dividend yield adjustmen
   - Positive edge → Option underpriced (potential buy candidate)  
 - 📊 **Greeks calculation** (Delta, Gamma, Theta)  
 - 📌 **Position tracker** to monitor active trades and P&L  
-- 🚀 **Intraday opportunity scanner**: highlights calls/puts with potential mispricings  
+- 🚀 **Intraday opportunity scanner**: identifies call/put mispricings during the trading session  
 
 ---
 
@@ -43,6 +43,7 @@ Getting live SPY options data with enhanced pricing...
 Current SPY Price: \$645.53
 Risk-free Rate: 3.90%
 Dividend Yield: 1.20%
+Time to Expiration: 0.04 days (0.9 hours)
 Last Updated: 13:40:22
 
 \=== CALLS (Individual IV Pricing) ===
@@ -71,7 +72,7 @@ BUY 651P - Edge: \$0.54, Delta: -1.000, IV: 0.0%
 - **Negative edge** → The option is *overpriced* vs. fair value → better to **sell**.  
 - **Positive edge** → The option is *underpriced* vs. fair value → better to **buy**.  
 
-This helps traders evaluate whether they are paying a premium or capturing value when entering trades.
+This is especially useful for **intraday traders** looking to capture small, short-term mispricings.
 
 ---
 
@@ -115,5 +116,7 @@ Use at your own discretion.
 ```
 
 ---
+
+
 
 
